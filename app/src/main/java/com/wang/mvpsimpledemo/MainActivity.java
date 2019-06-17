@@ -3,6 +3,7 @@ package com.wang.mvpsimpledemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,8 +17,6 @@ public class MainActivity extends AppCompatActivity implements IView {
     private EditText mEtName, mEtPassword;
     private Button mSubmit,clear;
 
-
-
     private Pressentor mPressentor = new Pressentor(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +25,42 @@ public class MainActivity extends AppCompatActivity implements IView {
         initView();
         initEvent();
 
-        mPressentor.method();
+
     }
 
     private void initEvent() {
 
+        mSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPressentor.method();
+            }
+        });
 
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEtName.setText("");
+                mEtPassword.setText("");
+            }
+        });
 
     }
 
     private void initView() {
 
+        mEtName = findViewById(R.id.etName);
+        mEtPassword = findViewById(R.id.etPassword);
+
+        mSubmit = findViewById(R.id.submit);
+        clear = findViewById(R.id.clear);
 
 
     }
 
     @Override
     public String getDataString() {
-        return null;
+        return mEtName.getText().toString();
     }
 
     @Override
