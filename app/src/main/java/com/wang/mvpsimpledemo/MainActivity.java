@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.wang.mvpsimpledemo.model.Bean;
 import com.wang.mvpsimpledemo.pressentor.Pressentor;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements IView {
 
     @Override
     public void viewMethod(Bean bean) {
+        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
         Log.i(TAG, "viewMethod: bean : "+bean.toString());
     }
 }
